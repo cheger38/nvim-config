@@ -1,7 +1,7 @@
 return {
   {
     "Aasim-A/scrollEOF.nvim",
-    event = { "CursorMoved", "WinScrolled" },
+    event = { "CursorMoved", "WinScrolled", "BufWinEnter" },
     opts = {
       insert_mode = false,
       floating = false,
