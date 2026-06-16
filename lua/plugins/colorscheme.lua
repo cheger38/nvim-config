@@ -1,6 +1,29 @@
+local theme = vim.env.NVIM_THEME or "noctalia"
+
 return {
   {
+    "LazyVim/LazyVim",
+    opts = {
+      colorscheme = function()
+        if theme == "vscode" then
+          vim.cmd.colorscheme("vscode")
+        elseif theme == "noctalia" then
+          require("matugen").setup()
+        end
+      end,
+    },
+  },
+  {
+    "RRethy/base16-nvim",
+    enabled = theme == "noctalia",
+    lazy = false,
+    priority = 1000,
+  },
+  {
     "Mofiqul/vscode.nvim",
+    enabled = theme == "vscode",
+    lazy = false,
+    priority = 1000,
     config = function()
       vim.o.background = "dark"
 
@@ -34,7 +57,6 @@ return {
   {
     "hiphish/rainbow-delimiters.nvim",
     config = function()
-      ---@type rainbow_delimiters.config
       vim.g.rainbow_delimiters = {
         strategy = {
           [""] = "rainbow-delimiters.strategy.global",
